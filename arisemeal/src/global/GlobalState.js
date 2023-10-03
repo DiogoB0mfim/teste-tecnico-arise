@@ -5,6 +5,7 @@ import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
   const [randomMeals, setRandomMeals] = useState([]);
+  const [selectedMeal, setSelectedMeal] = useState([]);
 
   /*Função para pegar 10 receitas aleatórias e popular o estado randomMeals*/
   const getRandomMeals = () => {
@@ -21,13 +22,24 @@ const GlobalState = (props) => {
         })
 
         .catch((error) => {
-          console.log(error)
+          console.log(error.message)
         })
     }
   }
 
+  /*Função para pesquisar receita pelo nome*/
+  const getMealByName = (name) => {
+    axios
+      .get(`${BASE_URL}search.php?s=${name}`)
 
+      .then((res) => {
+        setSelectedMeal(res.data.meals)
+      })
 
+      .catch((error) => {
+        console.log(error.message)
+      })
+  }
 
 
 
@@ -39,9 +51,11 @@ const GlobalState = (props) => {
   const data = {
     /* Estados */
     randomMeals,
-    
+    selectedMeal,
+
     /* Funções */
     getRandomMeals,
+    getMealByName
   };
 
   return (

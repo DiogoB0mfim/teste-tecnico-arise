@@ -5,8 +5,9 @@ export const Header = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     border-bottom: 1px solid #e9e9e9;
+    background-color: #ffff;
 `
 
 /*Estilização do ícone do header*/
@@ -25,4 +26,8 @@ export const OptAnchor = styled.a`
     font-size: 1.2rem;
     text-decoration: none;
     color: #000;
+
+    &:hover {
+        color: #D56C02;
+    }
 `

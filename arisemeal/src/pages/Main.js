@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import { useContext, useEffect } from "react";
 import GlobalStateContext from "../global/GlobalStateContext";
 import * as S from "../styles/MainStyled";
+import * as C from "../styles/CardStyled";
 
 const Main = () => {
     const { getRandomMeals, randomMeals } = useContext(GlobalStateContext)
@@ -10,14 +11,14 @@ const Main = () => {
 
     const renderMeals = randomMeals && randomMeals.map((meal, index) => {
         return (
-            <S.RecipeCard key={index}>
-                <S.RecipeImg src={meal.strMealThumb} alt="thumb" />
-                <S.InfosRecipe>
-                    <S.RecipeTitle>{meal.strMeal}</S.RecipeTitle>
-                    <S.RecipeDescription>{meal.strInstructions.slice(0, 180)}</S.RecipeDescription>
-                    <S.RecipeBtn href={meal.strYoutube} target="blank">Youtube</S.RecipeBtn>
-                </S.InfosRecipe>
-            </S.RecipeCard>
+            <C.RecipeCard key={index}>
+                <C.RecipeImg src={meal.strMealThumb} alt="thumb" />
+                <C.InfosRecipe>
+                    <C.RecipeTitle>{meal.strMeal}</C.RecipeTitle>
+                    <C.RecipeDescription>{meal.strInstructions.slice(0, 120)}</C.RecipeDescription>
+                    <C.RecipeBtn href={meal.strYoutube} target="blank">Youtube</C.RecipeBtn>
+                </C.InfosRecipe>
+            </C.RecipeCard>
         )
     })
 
