@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-/*Estilização container da página */
+/*Estilização do container da pagina */
 export const ContainerPage = styled.div`
     display: flex;
     flex-direction: column;
@@ -14,20 +14,6 @@ export const ContainerTitle = styled.h1`
     @media(max-width: 768px) {
         margin-top: 50px;
         font-size: 1.8rem;
-    }
-`
-
-/*Estilização container de receitas buscadas */
-export const ContainerRecipes = styled.div`
-    display: flex;
-    justify-content: center;
-    padding-bottom: 40px;
-    display: flex;
-    gap: 2rem;
-
-    @media(max-width: 768px) {
-        flex-direction: column;
-        align-items: center;
     }
 `
 
@@ -52,10 +38,6 @@ export const InputStyled = styled.input`
     }
 `
 
-export const NotFoundP = styled.p`
-    color: #808080 ;
-`
-
 export const BtnSearched = styled.button`
     border: none;
     background-color: #D56C02;
@@ -64,4 +46,30 @@ export const BtnSearched = styled.button`
     font-weight: bolder;
     border-radius: 5px;
     cursor: pointer;
+`
+
+export const ContainerIngredients = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 50%;
+`
+
+export const DivIngredient = styled.div`
+    width: 320px;
+`
+
+export const EachIngredient = styled.button`
+    width: 300px;
+    border: 1px solid #e9e9e9;
+    background-color: #ffff;
+    padding: 1rem;
+    font-size: 1.1rem;
+    transition: ease 0.5s;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: #e9e9e9;
+    }
 `

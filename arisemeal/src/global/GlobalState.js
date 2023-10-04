@@ -7,6 +7,7 @@ const GlobalState = (props) => {
   const [randomMeals, setRandomMeals] = useState([]);
   const [mealsByName, setMealsByName] = useState([]);
   const [mealsByLetter, setMealsByLetter] = useState([]);
+  const [allIngredients, setAllIngredients] = useState([]);
 
   /*Função para pegar 10 receitas aleatórias e popular o estado randomMeals*/
   const getRandomMeals = () => {
@@ -56,6 +57,18 @@ const GlobalState = (props) => {
       })
   }
 
+  const getAllIngredients = () => {
+    axios
+      .get(`${BASE_URL}list.php?i=list`)
+
+      .then((res) => {
+        setAllIngredients(res.data.meals)
+      })
+
+      .catch((error) => {
+        console.log(error.message)
+      })
+  }
 
 
 
@@ -67,11 +80,13 @@ const GlobalState = (props) => {
     randomMeals,
     mealsByName,
     mealsByLetter,
+    allIngredients,
 
     /* Funções */
     getRandomMeals,
     getMealByName,
-    getMealByLetter
+    getMealByLetter,
+    getAllIngredients
   };
 
   return (
