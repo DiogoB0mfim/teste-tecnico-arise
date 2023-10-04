@@ -5,14 +5,14 @@ import * as C from "../styles/CardStyled";
 import * as S from "../styles/SearchByNameStyled";
 
 const SearchByName = () => {
-    const { getMealByName, selectedMeal } = useContext(GlobalStateContext)
+    const { getMealByName, mealsByName } = useContext(GlobalStateContext)
     const [mealToSearch, setMealToSearch] = useState("");
 
     const onChangeMeal = (event) => {
         setMealToSearch(event.target.value);
     }
 
-    const renderSelectedMeal = selectedMeal && selectedMeal.map((meal, index) => {
+    const renderSelectedMeal = mealsByName && mealsByName.map((meal, index) => {
         return (
             <C.RecipeCard key={index}>
                 <C.RecipeImg src={meal.strMealThumb} alt="thumb" />
@@ -39,7 +39,7 @@ const SearchByName = () => {
                     <S.BtnSearched onClick={() => getMealByName(mealToSearch)}>Procurar</S.BtnSearched>
                 </S.ContainerInput>
                 <S.ContainerRecipes>
-                    {selectedMeal.length > 0 ? renderSelectedMeal : <S.NotFoundP>Receita não encontrada :{"("}</S.NotFoundP>}
+                    {mealsByName !== null ? renderSelectedMeal : <S.NotFoundP>Receita não encontrada :{"("}</S.NotFoundP>}
                 </S.ContainerRecipes>
             </S.ContainerPage>
         </>
