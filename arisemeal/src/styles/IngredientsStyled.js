@@ -54,6 +54,7 @@ export const ContainerIngredients = styled.div`
     flex-wrap: wrap;
     gap: 1rem;
     width: 50%;
+    margin-bottom: 1rem;
 `
 
 export const DivIngredient = styled.div`

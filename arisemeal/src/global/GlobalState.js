@@ -7,6 +7,8 @@ const GlobalState = (props) => {
   const [randomMeals, setRandomMeals] = useState([]);
   const [mealsByName, setMealsByName] = useState([]);
   const [mealsByLetter, setMealsByLetter] = useState([]);
+  const [mealByIngredient, setMealByIngredient] = useState([]);
+  const [mealById, setMealById] = useState([]);
   const [allIngredients, setAllIngredients] = useState([]);
 
   /*Função para pegar 10 receitas aleatórias e popular o estado randomMeals*/
@@ -57,12 +59,41 @@ const GlobalState = (props) => {
       })
   }
 
+  /*Função parar pegar todos ingredientes */
   const getAllIngredients = () => {
     axios
       .get(`${BASE_URL}list.php?i=list`)
 
       .then((res) => {
         setAllIngredients(res.data.meals)
+      })
+
+      .catch((error) => {
+        console.log(error.message)
+      })
+  }
+
+  /*Função parar pegar todas receitas por ingrediente */
+  const getRecipeByIngredient = (ingredient) => {
+    axios
+      .get(`${BASE_URL}filter.php?i=${ingredient}`)
+
+      .then((res) => {
+        setMealByIngredient(res.data.meals)
+      })
+
+      .catch((error) => {
+        console.log(error.message)
+      })
+  }
+
+  /*Função parar pegar receitas específica por id */
+  const geRecipeById = (id) => {
+    axios
+      .get(`${BASE_URL}lookup.php?i=${id}`)
+
+      .then((res) => {
+        setMealById(res.data.meals)
       })
 
       .catch((error) => {
@@ -81,12 +112,16 @@ const GlobalState = (props) => {
     mealsByName,
     mealsByLetter,
     allIngredients,
+    mealByIngredient,
+    mealById,
 
     /* Funções */
     getRandomMeals,
     getMealByName,
     getMealByLetter,
-    getAllIngredients
+    getAllIngredients,
+    getRecipeByIngredient,
+    geRecipeById
   };
 
   return (

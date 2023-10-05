@@ -2,8 +2,10 @@ import Header from "../components/Header";
 import * as S from "../styles/IngredientsStyled";
 import { useContext, useEffect, useState } from "react";
 import GlobalStateContext from "../global/GlobalStateContext";
+import { useNavigate } from "react-router-dom";
 
 const Ingredients = () => {
+    const navigate = useNavigate();
     const { getAllIngredients, allIngredients } = useContext(GlobalStateContext)
     const [filteredIngredient, setFilteredIngredient] = useState("")
 
@@ -17,7 +19,7 @@ const Ingredients = () => {
         if (ingredient.strIngredient.toUpperCase().includes(filteredIngredient.toUpperCase())) {
             return (
                 <S.DivIngredient key={index}>
-                    <a target="blank" href="/"><S.EachIngredient>{ingredient.strIngredient}</S.EachIngredient></a>
+                    <S.EachIngredient onClick={() => navigate(`/ingredients/filteredIngredient/${ingredient.strIngredient}`)}>{ingredient.strIngredient}</S.EachIngredient>
                 </S.DivIngredient>
             );
         }
@@ -25,7 +27,7 @@ const Ingredients = () => {
         else if (filteredIngredient === "") {
             return (
                 <S.DivIngredient key={index}>
-                    <a target="blank" href="/"><S.EachIngredient>{ingredient.strIngredient}</S.EachIngredient></a>
+                    <S.EachIngredient>{ingredient.strIngredient}</S.EachIngredient>
                 </S.DivIngredient>
             );
         }

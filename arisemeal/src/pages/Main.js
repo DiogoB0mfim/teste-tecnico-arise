@@ -3,8 +3,10 @@ import { useContext, useEffect } from "react";
 import GlobalStateContext from "../global/GlobalStateContext";
 import * as S from "../styles/MainStyled";
 import * as C from "../styles/CardStyled";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
+    const navigate = useNavigate();
     const { getRandomMeals, randomMeals } = useContext(GlobalStateContext)
 
     useEffect(() => { getRandomMeals(); }, [])
@@ -12,7 +14,7 @@ const Main = () => {
     const renderMeals = randomMeals && randomMeals.map((meal, index) => {
         return (
             <C.RecipeCard key={index}>
-                <C.RecipeImg src={meal.strMealThumb} alt="thumb" />
+                <C.RecipeImg src={meal.strMealThumb} alt="thumb" onClick={() => navigate(`/meal/${meal.idMeal}`)} />
                 <C.InfosRecipe>
                     <C.RecipeTitle>{meal.strMeal}</C.RecipeTitle>
                     <C.RecipeDescription>{meal.strInstructions.slice(0, 120)}</C.RecipeDescription>
