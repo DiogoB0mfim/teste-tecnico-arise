@@ -23,6 +23,7 @@ export const ContainerRecipes = styled.div`
     justify-content: center;
     padding-bottom: 40px;
     display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
 
     @media(max-width: 768px) {

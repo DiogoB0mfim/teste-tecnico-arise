@@ -50,7 +50,7 @@ export const RecipeBtn = styled.a`
     transition: background-color 0.3s ease;
     width: 70px;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
 
     &:hover {
         background-color: #a46b14;
