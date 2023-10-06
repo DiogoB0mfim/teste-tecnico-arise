@@ -1,5 +1,9 @@
 <br/>
-
+<p align="center">
+ <a href="https://i.imgur.com/TizRwfS.png"><img src="https://i.imgur.com/TizRwfS.png" title="source: imgur.com" /></a>
+<p/>
+  
+<br/>
 <h1 align="center"> 🖼 Teste técnico Arise</h1>
 <br/>
 
