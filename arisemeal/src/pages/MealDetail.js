@@ -32,35 +32,46 @@ const MealDetail = () => {
         filterProperties("strMeasure", measurement);
 
         return (
-            <div key={index}>
-                <h1>{meal.strMeal}</h1>
-                <img src={meal.strMealThumb} />
-                <p>Categoria: {meal.strCategory}</p>
-                <p>Area: {meal.strArea}</p>
-                <p>{meal.strInstructions}</p>
-                <ol>
-                    {ingredients.map((ingredient, index) => {
-                        return (<li key={index}>{ingredient}</li>);
-                    })}
-                </ol>
-                <ol>
-                    {measurement.map((measurement, index) => {
-                        return (<li key={index}>{measurement}</li>);
-                    })}
-                </ol>
+            <S.TheMeal key={index}>
+                <S.ContainerTitle>{meal.strMeal}</S.ContainerTitle>
+                <S.RecipeImg src={meal.strMealThumb} alt="imagem da receita"/>
+                <S.InfoCategoryDiv>
+                    <p><b>Categoria:</b> {meal.strCategory}</p>
+                    <p><b>Area:</b> {meal.strArea}</p>
+                    <p><b>Tags:</b> {meal.strTags}</p>
+                </S.InfoCategoryDiv>
+                <S.RecipeInstruction>{meal.strInstructions}</S.RecipeInstruction>
+                <S.RecipeDiv>
+                    <S.EachInst>
+                        <S.H4Recipe>Ingredientes</S.H4Recipe>
+                        <S.OLRecipe>
+                            {ingredients.map((ingredient, index) => {
+                                return (<li key={index}>{ingredient}</li>);
+                            })}
+                        </S.OLRecipe>
+                    </S.EachInst>
+                    <S.EachInst>
+                        <S.H4Recipe>Medidas</S.H4Recipe>
+                        <S.OLRecipe>
+                            {measurement.map((measurement, index) => {
+                                return (<li key={index}>{measurement}</li>);
+                            })}
+                        </S.OLRecipe>
+                    </S.EachInst>
+                </S.RecipeDiv>
                 <C.RecipeBtn href={meal.strYoutube} target="blank">Youtube</C.RecipeBtn>
-            </div>
+            </S.TheMeal>
         )
     })
 
     return (
         <>
             <Header />
-            <div>
-                <div>
+            <S.ContainerPage>
+                <S.ContainerMeal>
                     {renderMeal}
-                </div>
-            </div>
+                </S.ContainerMeal>
+            </S.ContainerPage>
         </>
     );
 }

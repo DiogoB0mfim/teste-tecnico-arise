@@ -3,8 +3,10 @@ import Header from "../components/Header";
 import GlobalStateContext from "../global/GlobalStateContext";
 import * as C from "../styles/CardStyled";
 import * as S from "../styles/SearchByNameStyled";
+import { useNavigate } from "react-router-dom";
 
 const SearchByName = () => {
+    const navigate = useNavigate();
     const { getMealByName, mealsByName } = useContext(GlobalStateContext)
     const [mealToSearch, setMealToSearch] = useState("");
 
@@ -15,7 +17,7 @@ const SearchByName = () => {
     const renderSelectedMeal = mealsByName && mealsByName.map((meal, index) => {
         return (
             <C.RecipeCard key={index}>
-                <C.RecipeImg src={meal.strMealThumb} alt="thumb" />
+                <C.RecipeImg src={meal.strMealThumb} alt="thumb" onClick={() => navigate(`/meal/${meal.idMeal}`)} />
                 <C.InfosRecipe>
                     <C.RecipeTitle>{meal.strMeal}</C.RecipeTitle>
                     <C.RecipeDescription>{meal.strInstructions.slice(0, 120)}</C.RecipeDescription>

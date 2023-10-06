@@ -1,5 +1,5 @@
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import GlobalStateContext from "../global/GlobalStateContext";
 import Header from "../components/Header";
@@ -7,6 +7,7 @@ import * as C from "../styles/CardStyled";
 import * as S from "../styles/ChoosedIngredientsStyled";
 
 const ChoosedIngredient = () => {
+    const navigate = useNavigate();
     const { ingredient } = useParams();
     const { getRecipeByIngredient, mealByIngredient } = useContext(GlobalStateContext)
 
@@ -15,7 +16,7 @@ const ChoosedIngredient = () => {
     const renderSelectedMeal = mealByIngredient && mealByIngredient.map((meal, index) => {
         return (
             <C.RecipeCard key={index}>
-                <C.RecipeImg src={meal.strMealThumb} alt="thumb" />
+                <C.RecipeImg src={meal.strMealThumb} alt="thumb"  onClick={() => navigate(`/meal/${meal.idMeal}`)} />
                 <C.InfosRecipe>
                     <C.RecipeTitle>{meal.strMeal}</C.RecipeTitle>
                     <C.RecipeBtn href={meal.strYoutube} target="blank">Youtube</C.RecipeBtn>
